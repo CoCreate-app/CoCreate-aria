@@ -37,11 +37,23 @@ function addPopupListener() {
 					}
 				}
 
-				if (closeOn === "outside") {
-					if (closeOnEl.contains(event.target)) continue;
-				} else if (closeOn === "button" || closeOn === "btn") {
-					continue;
+				let closeOnConditions = closeOn ? closeOn.split(",").map(c => c.trim()) : [];
+
+				let shouldClose = false;
+				for (let condition of closeOnConditions) {
+					if (condition === "outside" && !closeOnEl.contains(event.target)) {
+						shouldClose = true;
+					} else if (condition === "inside" && closeOnEl.contains(event.target)) {
+						shouldClose = true;
+					} else if (condition === "anywhere") {
+						shouldClose = true;
+					}
+
+					// If any condition matches, break the loop
+					if (shouldClose) break;
 				}
+
+				if (!shouldClose) continue;
 
 				controlledElement.classList.remove("show");
 				updateAllControls(controlledId, "false");
@@ -104,6 +116,7 @@ function initElement(elements) {
 			const hasAriaOpen = this.hasAttribute("aria-open");
 			const hasAriaClose = this.hasAttribute("aria-close");
 			const expanded = this.getAttribute("aria-expanded");
+			const controlsClass = this.getAttribute("aria-controls-class") || "show";
 
 			// Apply aria-open and aria-close logic globally, before any role-specific logic
 			if (hasAriaOpen && expanded === "true") {
@@ -124,20 +137,32 @@ function initElement(elements) {
 						document.getElementById(tabControlledId);
 					if (this === tab) {
 						tab.setAttribute("aria-selected", "true");
-						tabControlledEl.classList.add("show");
+						tabControlledEl.setAttribute("aria-hidden", "false");
+						if (controlsClass) {
+							tabControlledEl.classList.add(controlsClass);
+						}
 					} else {
 						tab.setAttribute("aria-selected", "false");
-						tabControlledEl.classList.remove("show");
+						tabControlledEl.setAttribute("aria-hidden", "true");
+						if (controlsClass) {
+							tabControlledEl.classList.remove(controlsClass);
+						}
 					}
 				}
 			} else {
 				// Default toggle logic
 				if (expanded === "true") {
-					controlledElement.classList.remove("show");
+					controlledElement.setAttribute("aria-hidden", "true");
+						if (controlsClass) {
+							controlledElement.classList.remove(controlsClass);
+						}
 					updateAllControls(controlledId, "false");
 					removePopupListener();
 				} else {
-					controlledElement.classList.add("show");
+					controlledElement.setAttribute("aria-hidden", "false");
+					if (controlsClass) {
+						controlledElement.classList.add(controlsClass);
+					}
 					updateAllControls(controlledId, "true");
 					if (closeOn !== "btn" && closeOn !== "button") {
 						addPopupListener();
