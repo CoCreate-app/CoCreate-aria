@@ -11,6 +11,7 @@ let popupListener = null;
 function addPopupListener() {
 	if (!popupListener) {
 		popupListener = function (event) {
+			
 			const hasPopUps = document.querySelectorAll(
 				'[aria-controls][aria-haspopup][aria-expanded="true"]'
 			);
@@ -25,6 +26,7 @@ function addPopupListener() {
 					skipControlledId = controlledId;
 					continue; // Ignore clicks inside the popup
 				}
+
 				const controlledElement = document.getElementById(controlledId);
 				let closeOn = controlledElement.getAttribute("aria-close-on");
 				let closeOnEl = controlledElement;
@@ -56,6 +58,7 @@ function addPopupListener() {
 				if (!shouldClose) continue;
 
 				controlledElement.classList.remove("show");
+				controlledElement.setAttribute("aria-hidden", "true");
 				updateAllControls(controlledId, "false");
 			}
 			// Remove listener if no popups remain open
