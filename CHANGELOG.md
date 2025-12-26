@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/CoCreate-app/CoCreate-aria/compare/v1.1.0...v1.1.1) (2025-12-26)
+
+
+### Bug Fixes
+
+* update worklow ([32b1cff](https://github.com/CoCreate-app/CoCreate-aria/commit/32b1cffdce4f66ab078407cae412a5583afb92a4))
+
 # [1.1.0](https://github.com/CoCreate-app/CoCreate-aria/compare/v1.0.0...v1.1.0) (2025-11-16)
 
 
