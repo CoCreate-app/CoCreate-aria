@@ -120,6 +120,7 @@ function initElement(elements) {
 			const hasAriaClose = this.hasAttribute("aria-close");
 			const expanded = this.getAttribute("aria-expanded");
 			const controlsClass = this.getAttribute("aria-controls-class") || "show";
+			const group = this.getAttribute("aria-controls-group");
 
 			// Apply aria-open and aria-close logic globally, before any role-specific logic
 			if (hasAriaOpen && expanded === "true") {
@@ -165,6 +166,27 @@ function initElement(elements) {
 					controlledElement.setAttribute("aria-hidden", "false");
 					if (controlsClass) {
 						controlledElement.classList.add(controlsClass);
+					}
+					if (group) {
+						const groupedControls = document.querySelectorAll(
+							`[aria-controls-group="${group}"][aria-expanded="true"]`
+						);
+						for (let groupedControl of groupedControls) {
+							const groupedId =
+								groupedControl.getAttribute("aria-controls");
+							if (!groupedId || groupedId === controlledId) continue;
+							const groupedElement =
+								document.getElementById(groupedId);
+							if (!groupedElement) continue;
+							const groupedControlsClass =
+								groupedControl.getAttribute("aria-controls-class") ||
+								"show";
+							groupedElement.setAttribute("aria-hidden", "true");
+							if (groupedControlsClass) {
+								groupedElement.classList.remove(groupedControlsClass);
+							}
+							updateAllControls(groupedId, "false");
+						}
 					}
 					updateAllControls(controlledId, "true");
 					if (closeOn !== "btn" && closeOn !== "button") {
