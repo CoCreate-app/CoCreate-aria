@@ -1,3 +1,15 @@
+# [1.2.0](https://github.com/CoCreate-app/CoCreate-aria/compare/v1.1.1...v1.2.0) (2026-02-09)
+
+
+### Bug Fixes
+
+* root factory variable Module ([6f35875](https://github.com/CoCreate-app/CoCreate-aria/commit/6f358757c9917ec52c397a35bc6f5e97976de6ed))
+
+
+### Features
+
+* aria-attribute-group for tab navigation grouping to deactivate state of other tabs in the group ([12822c0](https://github.com/CoCreate-app/CoCreate-aria/commit/12822c04fbe41672833852018242a58c179b9229))
+
 ## [1.1.1](https://github.com/CoCreate-app/CoCreate-aria/compare/v1.1.0...v1.1.1) (2025-12-26)
 
 
