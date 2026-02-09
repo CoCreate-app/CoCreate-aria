@@ -1,6 +1,6 @@
 # CoCreate-aria
 
-Chain multiple component executions to generate your desired logic, when one action is complete next one will start. The sequence goes until all aria have been completed. Vanilla javascript, easily configured using HTML5 attributes and/or JavaScript API. Take it for a spin in our [playground!](https://cocreate.app/docs/aria)
+Orchestrate dynamic UI behavior and ARIA state with event-driven action chains, configured via HTML5 attributes or the JavaScript API. Take it for a spin in our [playground!](https://cocreate.app/docs/aria)
 
 ![minified](https://img.badgesize.io/https://cdn.cocreate.app/aria/latest/CoCreate-aria.min.js?style=flat-square&label=minified&color=orange)
 ![gzip](https://img.badgesize.io/https://cdn.cocreate.app/aria/latest/CoCreate-aria.min.js?compression=gzip&style=flat-square&label=gzip&color=yellow)

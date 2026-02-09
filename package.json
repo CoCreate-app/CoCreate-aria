@@ -1,17 +1,19 @@
 {
   "name": "@cocreate/aria",
   "version": "1.1.1",
-  "description": "Chain multiple component executions to generate your desired logic, when one action is complete next one will start. The sequence goes until all aria have been completed. Vanilla javascript, easily configured using HTML5 attributes and/or JavaScript API.",
+  "description": "Orchestrate dynamic UI behavior and ARIA state with event-driven action chains, configured via HTML5 attributes or the JavaScript API.",
   "keywords": [
     "aria",
-    "chain-functions",
+    "workflow",
+    "orchestration",
+    "automation",
+    "chain-actions",
+    "event-driven",
+    "attributes",
+    "dom",
     "low-code",
-    "realtime",
-    "realtime-framework",
-    "collaboration",
-    "shared-editing",
-    "html5-framework",
-    "javascript-framework"
+    "html5",
+    "javascript"
   ],
   "publishConfig": {
     "access": "public"
@@ -47,8 +49,6 @@
     "webpack-log": "^3.0.1"
   },
   "dependencies": {
-    "@cocreate/observer": "^1.18.1",
-    "@cocreate/uuid": "^1.12.1",
-    "@cocreate/utils": "^1.39.0"
+    "@cocreate/observer": "^1.18.4"
   }
 }
