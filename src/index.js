@@ -61,8 +61,11 @@ function initElement(elements) {
 
             const closeOn = controlledElement.getAttribute("aria-close-on");
             const role = this.getAttribute("role");
-            const hasAriaOpen = this.hasAttribute("aria-open");
-            const hasAriaClose = this.hasAttribute("aria-close");
+            const ariaOpenAttr = this.getAttribute("aria-open");
+            const ariaCloseAttr = this.getAttribute("aria-close");
+            // Treat these attributes as boolean-like: presence and not equal to "false"
+            const hasAriaOpen = ariaOpenAttr !== null && ariaOpenAttr !== "false";
+            const hasAriaClose = ariaCloseAttr !== null && ariaCloseAttr !== "false";
             const expanded = this.getAttribute("aria-expanded");
             const controlsClass = this.getAttribute("aria-controls-class") || "show";
             const group = this.getAttribute("aria-controls-group");
